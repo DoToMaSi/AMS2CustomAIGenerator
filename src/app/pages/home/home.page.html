@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>Automobilista 2 - Custom AI Generator</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="home-text">
+          <h6>How to use?</h6>
+          <p>Simple. Just add drivers to the list, define their params and click "Generate" which will create a XML file for that class.</p>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col sizeXs="12" sizeMd="4" class="padding">
+        <ion-item fill="outline">
+          <ion-label position="floating">Car Class</ion-label>
+          <ion-select interface="popover">
+            <ion-select-option *ngFor="let class of carClasses" [value]="class.value">{{ class.label }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

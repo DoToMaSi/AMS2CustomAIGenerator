@@ -24,3 +24,117 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+* {
+  font-family:'Noto Sans', Verdana, Arial, sans-serif !important;
+  font-weight: 400;
+}
+
+b {
+  font-weight: 700;
+}
+
+p, h6, h5, h4, h2, h1 {
+  margin-block-start: 0px !important;
+  margin-block-end: 0px !important;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+small {
+  font-size: 12px;
+}
+
+label {
+  font-size: 14px;
+}
+
+p {
+  font-size: 16px;
+}
+
+h6 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 29px;
+}
+
+h3 {
+  font-size: 34px;
+}
+
+h2 {
+  font-size: 41px;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+.padding {
+  padding: 8px;
+
+  &-horizontal {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  &-vertical {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  &-left {
+    padding-left: 8px;
+  }
+
+  &-right {
+    padding-right: 8px;
+  }
+
+  &-top {
+    padding-top: 8px;
+  }
+
+  &-bottom {
+    padding-bottom: 8px;
+  }
+}
+
+.margin {
+  margin: 8px;
+
+  &-horizontal {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  &-vertical {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  &-left {
+    margin-left: 8px;
+  }
+
+  &-right {
+    margin-right: 8px;
+  }
+
+  &-top {
+    margin-top: 8px;
+  }
+
+  &-bottom {
+    margin-bottom: 8px;
+  }
+}
