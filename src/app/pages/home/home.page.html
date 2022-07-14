@@ -27,9 +27,45 @@
     </ion-row>
 
     <ion-row>
-      <ion-col sizeXs="12" class="padding">
+      <ion-col sizeXs="6" class="padding">
         <div class="driver-list-div">
+          <ion-card *ngFor="let driver of driverListForm">
+            <form [formGroup]="driver">
+              <ion-card-header>
+                <ion-card-title>
+                  {{ driver.get('name').value || '[Driver Name]' }}
+                </ion-card-title>
+                <ion-card-subtitle>
+                  {{ driver.get('liveryName').value || '[Livery Name]' }}
+                </ion-card-subtitle>
+              </ion-card-header>
 
+              <ion-card-content>
+                <ion-list class="driver-list-div">
+                  <ion-item fill="outline">
+                    <ion-label position="floating">Livery Name</ion-label>
+                    <ion-input type="text" formControlName="liveryName"></ion-input>
+                  </ion-item>
+                  <small><b>Write the Livery Name that is in the Custom Liveries XML of the car (or the name of the livery in-game).</b></small>
+
+                  <ion-item fill="outline">
+                    <ion-label position="floating">Driver Name</ion-label>
+                    <ion-input type="text" formControlName="name"></ion-input>
+                  </ion-item>
+
+                  <ion-item fill="outline">
+                    <ion-label position="floating">Country</ion-label>
+                    <ion-select interface="popover" formControlName="country"></ion-select>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </form>
+          </ion-card>
+          <div>
+            <ion-button color="primary" fill="outline" (click)="addDriver()">
+              <ion-icon name="add-circle-outline" slot="start"></ion-icon>Add Driver
+            </ion-button>
+          </div>
         </div>
       </ion-col>
     </ion-row>

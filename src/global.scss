@@ -107,6 +107,10 @@ h1 {
   &-bottom {
     padding-bottom: 8px;
   }
+
+  &-none {
+    padding: 0px !important;
+  }
 }
 
 .margin {
@@ -136,5 +140,9 @@ h1 {
 
   &-bottom {
     margin-bottom: 8px;
+  }
+
+  &-none {
+    margin: 0px !important;
   }
 }
