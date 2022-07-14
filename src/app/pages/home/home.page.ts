@@ -17,6 +17,9 @@ export class HomePage implements OnInit {
   public driverList: DriverProfile[] = [];
   public driverListForm: FormGroup[] = [];
 
+  public minValue = 0;
+  public maxValue = 0;
+
   constructor(private toastUtils: ToastUtils) {}
 
   public ngOnInit(): void {}
@@ -26,19 +29,19 @@ export class HomePage implements OnInit {
       liveryName: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
       country: new FormControl('', Validators.required),
-      raceSkill: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      qualifyingSkill: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      aggression: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      defending: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      stamina: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      consistency: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      startReactions: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      wetSkill: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      tyreManagement: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      blueFlagConceding: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      weatherTyreChanges: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      avoidanceOfMistakes: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
-      avoidanceOfForcedMistakes: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(1)]),
+      raceSkill: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      qualifyingSkill: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      aggression: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      defending: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      stamina: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      consistency: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      startReactions: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      wetSkill: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      tyreManagement: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      blueFlagConceding: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      weatherTyreChanges: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      avoidanceOfMistakes: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
+      avoidanceOfForcedMistakes: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(100)]),
     });
 
     this.driverListForm.push(newDriver);
