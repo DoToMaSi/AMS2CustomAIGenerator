@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "AM2CustomAIGenerator",
+	"appId": "com.ams2customaigenerator.rockettsally",
+	"appName": "AM2 Custom AI Generator",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

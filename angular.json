@@ -7,7 +7,6 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
       "schematics": {},
       "architect": {
         "build": {
@@ -78,9 +77,7 @@
             "production": {
               "browserTarget": "app:build:production"
             },
-            "ci": {
-              "progress": false
-            }
+            "ci": {}
           }
         },
         "extract-i18n": {
