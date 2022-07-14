@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CAR_CLASSES } from 'src/app/utils/constants/car-classes';
+import { COUNTRY_CODES } from 'src/app/utils/constants/country-codes';
 import { DriverProfile } from 'src/app/utils/models/driver-profile';
 import { ToastUtils } from 'src/app/utils/toast';
 
@@ -12,6 +13,7 @@ import { ToastUtils } from 'src/app/utils/toast';
 export class HomePage implements OnInit {
 
   public carClasses = CAR_CLASSES;
+  public countryList = COUNTRY_CODES;
   public driverList: DriverProfile[] = [];
   public driverListForm: FormGroup[] = [];
 

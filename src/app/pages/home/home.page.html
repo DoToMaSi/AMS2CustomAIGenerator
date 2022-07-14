@@ -55,7 +55,11 @@
 
                   <ion-item fill="outline">
                     <ion-label position="floating">Country</ion-label>
-                    <ion-select interface="popover" formControlName="country"></ion-select>
+                    <ion-select interface="action-sheet" formControlName="country">
+                      <ion-select-option *ngFor="let country of countryList" [value]="country.alphaCode">
+                        {{ country.name }}
+                      </ion-select-option>
+                    </ion-select>
                   </ion-item>
                 </ion-list>
               </ion-card-content>
