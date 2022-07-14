@@ -1,0 +1,7 @@
+{
+  "name": "AM2CustomAIGenerator",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
