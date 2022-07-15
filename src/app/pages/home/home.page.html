@@ -27,29 +27,30 @@
       </ion-col>
     </ion-row>
 
-    <div class="driver-list-div">
-      <app-driver-card [text]="(driver.get('name').value || '[Driver Name]') + ' | ' + (driver.get('liveryName').value || '[Livery Name]')" [primaryCard]="true" *ngFor="let driver of driverListForm">
+    <div class="driver-list-div padding">
+      <app-driver-card [text]="(driver.get('liveryName').value || '[Livery Name]') + ' | ' + (driver.get('name').value || '[Driver Name]')"
+        [open]="false" [primaryCard]="true" *ngFor="let driver of driverListForm; let idx = index">
         <form [formGroup]="driver">
           <div class="driver-list-div">
             <app-driver-card text="Driver Info" [open]="true">
               <ion-grid class="padding-none">
                 <ion-row>
                   <ion-col>
-                    <ion-item fill="outline">
-                      <ion-label position="floating">Livery Name</ion-label>
-                      <ion-input type="text" formControlName="liveryName"></ion-input>
+                    <ion-item fill="solid">
+                      <ion-label position="floating" color="primary">Livery Name</ion-label>
+                      <ion-input type="text" class="padding-top" formControlName="liveryName"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col>
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Driver Name</ion-label>
                       <ion-input type="text" formControlName="name"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col>
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Country</ion-label>
                       <ion-select placeholder="Select a Country" interface="action-sheet" formControlName="country">
                         <ion-select-option *ngFor="let country of countryList" [value]="country.alphaCode">
@@ -66,91 +67,91 @@
               <ion-grid>
                 <ion-row>
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Race Skill </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue" formControlName="raceSkill"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Aggression </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="aggression"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Qualifying Skill </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="qualifyingSkill"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Defending </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="defending"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Stamina </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="stamina"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Consistency </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="consistency"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Start Reaction Skill </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="startReactions"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Wet Skill </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="wetSkill"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Tyre Management </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="tyreManagement"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Blue Flag Conceding </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="blueFlagConceding"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Weather Tyre Change Probability </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="weatherTyreChanges"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Avoidance of Mistakes </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="avoidanceOfMistakes"></ion-input>
                     </ion-item>
                   </ion-col>
 
                   <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
-                    <ion-item fill="outline">
+                    <ion-item fill="solid">
                       <ion-label position="floating">Avoidance of Mistakes Under Pressure </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="avoidanceOfForcedMistakes"></ion-input>
                     </ion-item>
@@ -158,6 +159,12 @@
                 </ion-row>
               </ion-grid>
             </app-driver-card>
+
+            <div class="remove-button-div">
+              <ion-button color="danger" fill="outline" (click)="removeDriver(idx)">
+                <ion-icon name="trash" slot="start"></ion-icon>Remove
+              </ion-button>
+            </div>
           </div>
         </form>
       </app-driver-card>
