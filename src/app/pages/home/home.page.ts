@@ -16,6 +16,7 @@ export class HomePage implements OnInit {
   public countryList = COUNTRY_CODES;
   public driverList: DriverProfile[] = [];
   public driverListForm: FormGroup[] = [];
+  public carClass = new FormControl(null, Validators.required);
 
   public minValue = 0;
   public maxValue = 0;

@@ -44,39 +44,39 @@ p, h6, h5, h4, h2, h1 {
 }
 
 small {
-  font-size: 12px;
+  font-size: 12px !important;
 }
 
-label {
-  font-size: 14px;
+label, ion-label {
+  font-size: 14px !important;
 }
 
 p {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
 h6 {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 
 h5 {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 
 h4 {
-  font-size: 29px;
+  font-size: 29px !important;
 }
 
 h3 {
-  font-size: 34px;
+  font-size: 34px !important;
 }
 
 h2 {
-  font-size: 41px;
+  font-size: 41px !important;
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 50px !important;
 }
 
 .padding {

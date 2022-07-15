@@ -1,0 +1,16 @@
+<div class="expansion-card" [class.primary-card]="primaryCard">
+  <div class="expansion-card-header" (click)="open = !open">
+    <div class="expansion-card-title">
+      <p><b>{{ text }}</b></p>
+    </div>
+    <div class="expansion-card-button">
+      <ion-button fill="clear" color="dark">
+        <ion-icon [class.open]="open" slot="icon-only" name="chevron-up-circle-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <div [hidden]="!open" class="expansion-card-content">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+.expansion-card {
+  padding: 8px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  border: 2px solid #C6C6C6;
+
+  &-header {
+    padding: 0px 8px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &-title {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &-button {
+    .open {
+      transition: all 0.25s;
+      transform: rotate(180deg);
+    }
+  }
+
+  &-content {
+    padding: 8px;
+  }
+
+  &.primary-card {
+    background-color: #fcfcfc;
+  }
+}
