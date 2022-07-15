@@ -33,7 +33,7 @@
 
       <ion-col sizeXs="12" sizeMd="3" class="padding">
         <ion-item fill="solid">
-          <ion-label position="floating">Filter Class</ion-label>
+          <ion-label position="floating">Filter Class (Optional)</ion-label>
           <ionic-selectable
             [formControl]="carCategory"
             [items]="carCategories"
@@ -87,8 +87,36 @@
               </ion-grid>
             </app-driver-card>
 
-            <app-driver-card text="Driver Skills (in Percentages)" [open]="true">
+            <app-driver-card text="Driver Skills (in Percentages - min: 0, max: 100)" [open]="true">
               <ion-grid class="padding-none">
+                <ion-row>
+                  <ion-col>
+                    <div class="button-area">
+                      <p>Generate Skill Template:</p>
+                      <ion-button color="light" (click)="generateDriverSkills('random' , idx)">
+                        <b>Full Random</b>
+                      </ion-button>
+                      <ion-button color="success" (click)="generateDriverSkills('beginner' , idx)">
+                        <b>Beginner (0 - 30%)</b>
+                      </ion-button>
+                      <ion-button color="secondary" (click)="generateDriverSkills('amateur' , idx)">
+                        <b>Amateur (30 - 50%)</b>
+                      </ion-button>
+                      <ion-button color="primary" (click)="generateDriverSkills('pro-amateur' , idx)">
+                        <b>Pro-Amateur (50 - 70%)</b>
+                      </ion-button>
+                      <ion-button color="warning" (click)="generateDriverSkills('professional' , idx)">
+                        <b>Professional (70 - 80%)</b>
+                      </ion-button>
+                      <ion-button color="danger" (click)="generateDriverSkills('superstar' , idx)">
+                        <b>Superstar (80 - 90%)</b>
+                      </ion-button>
+                      <ion-button color="dark" (click)="generateDriverSkills('legendary' , idx)">
+                        <b>Legendary (90 - 100%)</b>
+                      </ion-button>
+                    </div>
+                  </ion-col>
+                </ion-row>
                 <ion-row>
                   <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="1">
                     <ion-item fill="solid">

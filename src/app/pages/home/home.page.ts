@@ -3,9 +3,11 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { CAR_CATEGORIES, CAR_CLASSES } from 'src/app/utils/constants/car-classes';
 import { COUNTRY_CODES } from 'src/app/utils/constants/country-codes';
+import { DRIVER_SKILL_VARS } from 'src/app/utils/constants/driver-skills';
 import { AiObject } from 'src/app/utils/models/ai-object';
 import { CarCategory, CarClass } from 'src/app/utils/models/cars';
 import { DriverProfile } from 'src/app/utils/models/driver-profile';
+import { UtilsService } from 'src/app/utils/services/utils.service';
 import { XmlFileService } from 'src/app/utils/services/xml-file.service';
 import { ToastUtils } from 'src/app/utils/toast';
 
@@ -28,6 +30,7 @@ export class HomePage implements OnInit, AfterViewInit {
   public maxValue = 0;
 
   constructor(
+      private utilsService: UtilsService,
       private toastUtils: ToastUtils,
       private xmlFileService: XmlFileService
     ) {}
@@ -87,14 +90,63 @@ export class HomePage implements OnInit, AfterViewInit {
   }
 
   public changeCountry(event: {
-      component: IonicSelectableComponent,
-      value: any
-    }, index: number) {
-      this.driverListForm[index].get('country').setValue(event.value.alphaCode);
-    }
+    component: IonicSelectableComponent,
+    value: any
+  }, index: number) {
+    this.driverListForm[index].get('country').setValue(event.value.alphaCode);
+  }
 
   public removeDriver(index: number) {
     this.driverListForm.splice(index, 1);
+  }
+
+  public generateDriverSkills(skillRange: 'random' | 'beginner' | 'amateur' | 'pro-amateur' | 'professional' | 'superstar' | 'legendary', index: number) {
+    let minValue = 0;
+    let maxValue = 0;
+
+    switch(skillRange) {
+      case 'beginner':
+        minValue = 0;
+        maxValue = 30;
+        break;
+
+      case 'amateur':
+        minValue = 30;
+        maxValue = 50;
+        break;
+
+      case 'pro-amateur':
+        minValue = 50;
+        maxValue = 70;
+        break;
+
+      case 'professional':
+        minValue = 70;
+        maxValue = 80;
+        break;
+
+      case 'superstar':
+        minValue = 80;
+        maxValue = 90;
+        break;
+
+      case 'legendary':
+        minValue = 90;
+        maxValue = 100;
+        break;
+
+      case 'random':
+      default:
+        minValue = 0;
+        maxValue = 100;
+        break;
+    }
+
+    const driverForm = this.driverListForm[index];
+
+    DRIVER_SKILL_VARS.forEach((skill) => {
+      driverForm.get(skill).setValue(this.utilsService.between(minValue, maxValue));
+    });
   }
 
   public async generateDriverList() {
@@ -104,9 +156,12 @@ export class HomePage implements OnInit, AfterViewInit {
     }
 
     if (this.driverListForm.length > 0) {
+      this.driverListForm.forEach((driverForm) => {
+        driverForm.markAllAsTouched();
+      });
+
       for (let index = 0; index < this.driverListForm.length; index++) {
         const driverForm = this.driverListForm[index];
-        driverForm.markAllAsTouched();
         if (driverForm.invalid) {
           this.toastUtils.show(`Driver #${index + 1} ${ driverForm.get('name').value } has invalid values.`);
           return false;
