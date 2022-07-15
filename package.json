@@ -25,6 +25,8 @@
     "@capacitor/keyboard": "1.2.3",
     "@capacitor/status-bar": "1.0.8",
     "@ionic/angular": "^6.1.9",
+    "ionic-selectable": "^4.9.0",
+    "js2xmlparser": "^4.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
@@ -44,7 +46,7 @@
     "@schematics/angular": "^14.0.6",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.20.55",
     "@typescript-eslint/eslint-plugin": "5.3.0",
     "@typescript-eslint/parser": "5.3.0",
     "eslint": "^7.6.0",

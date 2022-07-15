@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { ComponentsModule } from 'src/app/utils/components/components.module';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ComponentsModule } from 'src/app/utils/components/components.module';
     IonicModule,
     ComponentsModule,
     HomePageRoutingModule,
+    IonicSelectableModule,
     ReactiveFormsModule
   ],
   declarations: [HomePage]

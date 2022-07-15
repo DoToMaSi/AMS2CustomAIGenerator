@@ -26,10 +26,18 @@ export class ToastUtils {
       color
     })
 
-    return toast;
+    toast.present();
   }
 
   public show(msg: string) {
-    return this.displayToast(msg);
+    this.displayToast(msg);
+  }
+
+  public success(msg: string) {
+    this.displayToast(msg, 'success');
+  }
+
+  public error(msg: string) {
+    this.displayToast(msg, 'danger');
   }
 }
