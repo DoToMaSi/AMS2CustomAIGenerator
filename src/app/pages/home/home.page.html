@@ -17,7 +17,7 @@
     </ion-row>
 
     <ion-row>
-      <ion-col sizeXs="12" sizeMd="4" class="padding">
+      <ion-col sizeXs="12" sizeMd="3" class="padding">
         <ion-item fill="solid">
           <ion-label position="floating">Car Class</ion-label>
           <ionic-selectable
@@ -30,10 +30,24 @@
           </ionic-selectable>
         </ion-item>
       </ion-col>
+
+      <ion-col sizeXs="12" sizeMd="3" class="padding">
+        <ion-item fill="solid">
+          <ion-label position="floating">Filter Class</ion-label>
+          <ionic-selectable
+            [formControl]="carCategory"
+            [items]="carCategories"
+            itemValueField="value"
+            itemTextField="label"
+            [canClear]="true"
+            [canSearch]="true">
+          </ionic-selectable>
+        </ion-item>
+      </ion-col>
     </ion-row>
 
     <div class="driver-list-div padding">
-      <app-driver-card *ngFor="let driver of driverListForm.controls; let idx = index"
+      <app-driver-card *ngFor="let driver of driverListForm; let idx = index"
         [text]="(idx + 1) + '#: ' + (driver.get('liveryName').value || '[Livery Name]') + ' | ' + (driver.get('name').value || '[Driver Name]')"
         [open]="false" [primaryCard]="true">
         <form [formGroup]="driver">
@@ -74,72 +88,72 @@
             </app-driver-card>
 
             <app-driver-card text="Driver Skills (in Percentages)" [open]="true">
-              <ion-grid>
+              <ion-grid class="padding-none">
                 <ion-row>
-                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="1">
                     <ion-item fill="solid">
-                      <ion-label position="floating">Race Skill </ion-label>
+                      <ion-label position="floating">Race Skill</ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue" formControlName="raceSkill"></ion-input>
                     </ion-item>
                   </ion-col>
 
-                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="1">
                     <ion-item fill="solid">
-                      <ion-label position="floating">Aggression </ion-label>
+                      <ion-label position="floating">Aggression</ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="aggression"></ion-input>
                     </ion-item>
                   </ion-col>
 
-                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="2">
                     <ion-item fill="solid">
-                      <ion-label position="floating">Qualifying Skill </ion-label>
+                      <ion-label position="floating">Qualifying Skill</ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="qualifyingSkill"></ion-input>
                     </ion-item>
                   </ion-col>
 
-                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="1">
                     <ion-item fill="solid">
-                      <ion-label position="floating">Defending </ion-label>
+                      <ion-label position="floating">Defending</ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="defending"></ion-input>
                     </ion-item>
                   </ion-col>
 
-                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="1">
                     <ion-item fill="solid">
-                      <ion-label position="floating">Stamina </ion-label>
+                      <ion-label position="floating">Stamina</ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="stamina"></ion-input>
                     </ion-item>
                   </ion-col>
 
-                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="2">
                     <ion-item fill="solid">
-                      <ion-label position="floating">Consistency </ion-label>
+                      <ion-label position="floating">Consistency</ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="consistency"></ion-input>
                     </ion-item>
                   </ion-col>
 
-                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="2">
                     <ion-item fill="solid">
                       <ion-label position="floating">Start Reaction Skill </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="startReactions"></ion-input>
                     </ion-item>
                   </ion-col>
 
-                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="2">
                     <ion-item fill="solid">
                       <ion-label position="floating">Wet Skill </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="wetSkill"></ion-input>
                     </ion-item>
                   </ion-col>
 
-                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="2">
                     <ion-item fill="solid">
                       <ion-label position="floating">Tyre Management </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="tyreManagement"></ion-input>
                     </ion-item>
                   </ion-col>
 
-                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="2">
                     <ion-item fill="solid">
                       <ion-label position="floating">Blue Flag Conceding </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="blueFlagConceding"></ion-input>
@@ -153,7 +167,7 @@
                     </ion-item>
                   </ion-col>
 
-                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+                  <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="2">
                     <ion-item fill="solid">
                       <ion-label position="floating">Avoidance of Mistakes </ion-label>
                       <ion-input type="number" [min]="minValue" [max]="maxValue"  formControlName="avoidanceOfMistakes"></ion-input>

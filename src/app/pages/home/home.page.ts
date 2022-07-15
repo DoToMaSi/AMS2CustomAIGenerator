@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IonicSelectableComponent } from 'ionic-selectable';
-import { CAR_CLASSES } from 'src/app/utils/constants/car-classes';
+import { CAR_CATEGORIES, CAR_CLASSES } from 'src/app/utils/constants/car-classes';
 import { COUNTRY_CODES } from 'src/app/utils/constants/country-codes';
 import { AiObject } from 'src/app/utils/models/ai-object';
+import { CarCategory, CarClass } from 'src/app/utils/models/cars';
 import { DriverProfile } from 'src/app/utils/models/driver-profile';
 import { XmlFileService } from 'src/app/utils/services/xml-file.service';
 import { ToastUtils } from 'src/app/utils/toast';
@@ -13,13 +14,15 @@ import { ToastUtils } from 'src/app/utils/toast';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, AfterViewInit {
 
-  public carClasses = CAR_CLASSES;
+  public carClasses: CarClass[] = [];
+  public carCategories: CarCategory[] = CAR_CATEGORIES;
   public countryList = COUNTRY_CODES;
   public driverList: DriverProfile[] = [];
-  public driverListForm = new FormArray([]);
+  public driverListForm: FormGroup[] = [];
   public carClass = new FormControl(null, Validators.required);
+  public carCategory = new FormControl(null);
 
   public minValue = 0;
   public maxValue = 0;
@@ -29,7 +32,35 @@ export class HomePage implements OnInit {
       private xmlFileService: XmlFileService
     ) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.initCarClassSelect();
+  }
+
+  public ngAfterViewInit(): void {
+    this.carCategory.valueChanges.subscribe((value: CarCategory | null) => {
+      if (value) {
+        this.carClasses = [];
+        const classesMatch = CAR_CLASSES.filter((carClass) => {
+          return carClass.category.includes(value.value);
+        });
+
+        if (classesMatch.length > 0) {
+          classesMatch.map((carClass) => {
+            this.carClasses.push(carClass);
+          })
+        }
+      } else {
+        this.initCarClassSelect();
+      }
+    })
+  }
+
+  private initCarClassSelect() {
+    this.carClasses = [];
+    CAR_CLASSES.map((carClass) => {
+      this.carClasses.push(carClass);
+    });
+  }
 
   public addDriver(): void {
     const newDriver = new FormGroup({
@@ -59,11 +90,11 @@ export class HomePage implements OnInit {
       component: IonicSelectableComponent,
       value: any
     }, index: number) {
-      this.driverListForm.at(index).get('country').setValue(event.value.alphaCode);
+      this.driverListForm[index].get('country').setValue(event.value.alphaCode);
     }
 
   public removeDriver(index: number) {
-    this.driverListForm.removeAt(index);
+    this.driverListForm.splice(index, 1);
   }
 
   public async generateDriverList() {
@@ -73,8 +104,8 @@ export class HomePage implements OnInit {
     }
 
     if (this.driverListForm.length > 0) {
-      for (let index = 0; index < this.driverListForm.controls.length; index++) {
-        const driverForm = this.driverListForm.controls[index];
+      for (let index = 0; index < this.driverListForm.length; index++) {
+        const driverForm = this.driverListForm[index];
         driverForm.markAllAsTouched();
         if (driverForm.invalid) {
           this.toastUtils.show(`Driver #${index + 1} ${ driverForm.get('name').value } has invalid values.`);
@@ -82,26 +113,25 @@ export class HomePage implements OnInit {
         }
       }
 
-      if (this.driverListForm.valid) {
-        const drivers = (this.driverListForm.value as DriverProfile[]);
 
-        try {
-          const xmlFileStr = await this.xmlFileService.generateAiFile(drivers);
-          console.log(xmlFileStr);
+      const drivers = (this.driverListForm.map((driverForm) => {
+        return driverForm.value;
+      }) as DriverProfile[]);
 
-          const element = document.createElement('a');
-          const blob = new Blob([xmlFileStr], {
-            type: 'text/xml'
-          });
-          var url = URL.createObjectURL(blob);
-          element.href = url;
-          element.setAttribute('download', `${this.carClass.value.value}.xml`);
-          document.body.appendChild(element);
-          element.click();
-        } catch (error) {
-          console.error(error);
-          this.toastUtils.error('Something went wrong in the Generation Process');
-        }
+      try {
+        const xmlFileStr = await this.xmlFileService.generateAiFile(drivers);
+        const element = document.createElement('a');
+        const blob = new Blob([xmlFileStr], {
+          type: 'text/xml'
+        });
+        var url = URL.createObjectURL(blob);
+        element.href = url;
+        element.setAttribute('download', `${this.carClass.value.value}.xml`);
+        document.body.appendChild(element);
+        element.click();
+      } catch (error) {
+        console.error(error);
+        this.toastUtils.error('Something went wrong in the Generation Process');
       }
     } else {
       this.toastUtils.show('Create one driver, at least, to generate an AI file');
